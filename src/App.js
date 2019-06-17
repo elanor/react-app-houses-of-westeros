@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logogot2.png';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logogot2.png";
+import "./App.css";
+import House from "./components/House/House";
+import Lords from "./components/Lords/Lords";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { render } from "react-dom";
+import { ensureExpectedIsNonNegativeInteger } from "jest-matcher-utils";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This page shows some great houses of the World of Ice and Fire
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <div>
+            <header>
+              <nav>
+                <Link to="/">Welcome</Link>
+
+                <Link to="/houses/">Houses</Link>
+
+                <Link to="/lords/">Lords</Link>
+              </nav>
+
+              <Route
+                path="/"
+                exact
+                component={() => <div className="App">Select something</div>}
+              />
+              <Route
+                path="/houses/"
+                component={
+                  /* () => 
+                <div>
+                  <House name="House Stark" place="Winterfell"/>
+                  <House name="House Lannister" place="Casterly Rock"/>
+                  <House name="House Baratheon" place="King's Landing"/>
+                </div> */ House
+                }
+              />
+
+              <Route
+                path="/lords/"
+                component={
+                  /* () =>
+                <div>
+                  <Lords 
+                  name="Eddard Stark" 
+                  title="Lord of Winterfell" />
+                  
+                  <Lords
+                  name="Tywin Lannister" 
+                  title="Lord of Casterly Rock"/>
+                </div> */ Lords
+                }
+              />
+            </header>
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
