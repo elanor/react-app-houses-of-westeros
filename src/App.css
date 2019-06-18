@@ -32,6 +32,8 @@ div {
   color: red;
 }
 
+
+
 nav {
   background-color: rgb(167, 223, 197);
   padding: 8px;
@@ -42,7 +44,7 @@ nav {
 h2 {
   text-align: start;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 16px;
   color: black;
   padding: 8px;
 }
@@ -50,7 +52,7 @@ h2 {
 h3 {
   text-align: start;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 14px;
   color: gray;
   padding: 40px;
 }

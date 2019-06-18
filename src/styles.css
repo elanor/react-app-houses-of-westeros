@@ -1,0 +1,14 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  header {
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+  }
+  
+  a {
+    margin: 0 10px;
+  }
+  

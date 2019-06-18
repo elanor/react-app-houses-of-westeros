@@ -1,89 +1,94 @@
-import React, { Component } from "react";
-
-import "./App.css";
-import House from "./components/House/House";
-import Lords from "./components/Lords/Lords";
+import React from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { render } from "react-dom";
-import { ensureExpectedIsNonNegativeInteger } from "jest-matcher-utils";
+import "./styles.css";
+import Lord from "./components/Lord";
+import House from "./components/House";
+import { lords, houses } from "./components/data";
+import {Card, ListGroup, ListGroupItem, Button} from "react-bootstrap";
 
-const linkStyle = {
-  marginRight: '10px'
-  
-};
+const Home = () => (
+  <Card style={{ width: "18rem" }}>
+    <Card.Body>
+      <Card.Title>Welcome to the Houses of Westeros</Card.Title>
+      <Card.Subtitle className="mb-2 text-muted">
+        You can browse through lords or houses
+      </Card.Subtitle>
+      <Card.Text>
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </Card.Text>
+      <Card.Link href="/lords">Go to lords</Card.Link>
+      <Card.Link href="/houses">Go to Houses</Card.Link>
+    </Card.Body>
+  </Card>
+);
+
+const LordsHome = () => <h1>Please choose a lord</h1>;
+
+const Lords = ({ match }) => (
+  <p>
+    Lords
+    <Route path={`${match.path}/`} exact component={LordsHome} />
+    <ListGroup className="list-group-flush">
+          <ListGroupItem><Route path={`${match.path}/:id`} component={Lord} /></ListGroupItem>
+    </ListGroup> 
+    
+  </p>
+);
+
+const HousesHome = () => <h1>Please choose a house</h1>;
+
+const Houses = ({ match }) => (
+  <p>
+    Houses
+    <ListGroup className="list-group-flush">
+          <ListGroupItem>
+          <Route path={`${match.path}/`} exact component={HousesHome} />
+          <Route path={`${match.path}/:id`} component={House} />
+          </ListGroupItem>
+        </ListGroup> 
+    
+  </p>
+);
+
+const App = () => (
+  <Router>
+    <div className="App">
+      <header>
+        <Link to="/">Home</Link>
+        <Link to="/lords">Lords</Link>
+        <Link to="/houses">Houses</Link>
+      </header>
 
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <div>
-            <header>
-              <nav
-                style={{
-                  border: "1px solid green",
-                  paddingBottom: "10px",
-                  margin: "12px"
-                }}
-              >
-                <Link style={linkStyle} to="/">
-                  Welcome
-                </Link>
+      {lords.map(lord => (
+        
+        <ListGroup className="list-group-flush">
+          <ListGroupItem>
+            <Link to={`/lords/${lord.id}`}>{lord.name}</Link>
+            <Button onClick={null} >Show all</Button>
+          </ListGroupItem>
+          
+        </ListGroup> 
+        
+      ))}
 
-                <Link style={linkStyle} to="/houses/">
-                  Houses
-                </Link>
+        
+      {houses.map(house => (
+        <ListGroup className="list-group-flush">
+          <Link to={`/houses/${house.id}`}>{house.name}</Link>
+        </ListGroup> 
+      ))}
 
-                <Link style={linkStyle} to="/lords/">
-                  Lords
-                </Link>
-              </nav>
+      <Route path="/" exact component={Home} />
+      <Route path="/lords" component={Lords} />
+      <Route path="/houses" component={Houses} />
+    </div>
+  </Router>
+);
 
-              <Route
-                path="/"
-                exact
-                component={() => <div className="App">Select something</div>}
-              />
-              <Route
-                path="/houses/"
-                component={(props) => 
-                  <div>
-                <House name="House Stark" {...props} />
-                <House name="House Lannister" {...props} />
-                <House name="House Baratheon" {...props} />}
-                </div>}
-                
-                  /* () => 
-                <div>
-                  <House name="House Stark" place="Winterfell"/>
-                  <House name="House Lannister" place="Casterly Rock"/>
-                  <House name="House Baratheon" place="King's Landing"/>
-                </div> */ 
-                
-              />
-
-              <Route
-                path="/lords/"
-                component={
-                  /* () =>
-                <div>
-                  <Lords 
-                  name="Eddard Stark" 
-                  title="Lord of Winterfell" />
-                  
-                  <Lords
-                  name="Tywin Lannister" 
-                  title="Lord of Casterly Rock"/>
-                </div> */ Lords
-                }
-              />
-            </header>
-          </div>
-        </Router>
-      </div>
-    );
-  }
-}
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
 
 export default App;
