@@ -2,9 +2,8 @@ import React from 'react';
 import './Lords.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-
   
-const Lord = ( {match} ) => {
+const Lord = ( {match, name} ) => {
     
     return(
     <div>
@@ -13,7 +12,7 @@ const Lord = ( {match} ) => {
         <Route>
           
         
-            <Link to={`${match.url}/componentsl`}>Componentsl {this.params.name} {this.params.title}</Link>
+            <Link to={`${match.url}/componentsl`}>Componentsl {match.params.name}</Link>
           
             <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
           
