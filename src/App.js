@@ -5,10 +5,10 @@ import "./styles.css";
 import Lord from "./components/Lord";
 import House from "./components/House";
 import { lords, houses } from "./components/data";
-import {Card, ListGroup, ListGroupItem, Button} from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Container, Row } from "react-bootstrap";
 
 const Home = () => (
-  <Card style={{ width: "18rem" }}>
+  <Card style={{ width: "25rem" }}>
     <Card.Body>
       <Card.Title>Welcome to the Houses of Westeros</Card.Title>
       <Card.Subtitle className="mb-2 text-muted">
@@ -18,37 +18,45 @@ const Home = () => (
         Some quick example text to build on the card title and make up the bulk
         of the card's content.
       </Card.Text>
-      <Card.Link href="/lords">Go to lords</Card.Link>
-      <Card.Link href="/houses">Go to Houses</Card.Link>
+      <Link to="/lords">Go to lords</Link>
+      <Link to="/houses">Go to Houses</Link>
     </Card.Body>
   </Card>
 );
 
-const LordsHome = () => <h1>Please choose a lord</h1>;
-
-const Lords = ({ match }) => (
+const LordsList = () => (
   <p>
-    Lords
-    <Route path={`${match.path}/`} exact component={LordsHome} />
-    <ListGroup className="list-group-flush">
-          <ListGroupItem><Route path={`${match.path}/:id`} component={Lord} /></ListGroupItem>
-    </ListGroup> 
-    
+    <h3>Lords</h3>
+    {lords.map(lord => (
+      <ListGroup className="list-group-flush">
+        <ListGroupItem>
+          <Link to={`/lords/${lord.id}`} className="linkStyle">{lord.name}</Link>
+        </ListGroupItem>
+      </ListGroup>
+    ))}
+    <p>
+      <Link to="/lords/all" className="linkStyle">All lords</Link>
+    </p>
   </p>
 );
 
-const HousesHome = () => <h1>Please choose a house</h1>;
+const LordCards = () => lords.map(lord => <Lord lord={lord} />);
 
-const Houses = ({ match }) => (
+const HouseCards = () => houses.map(house => <House house={house} />);
+
+const Houses = () => (
   <p>
-    Houses
-    <ListGroup className="list-group-flush">
-          <ListGroupItem>
-          <Route path={`${match.path}/`} exact component={HousesHome} />
-          <Route path={`${match.path}/:id`} component={House} />
-          </ListGroupItem>
-        </ListGroup> 
-    
+    <h3>Houses</h3>
+    {houses.map(house => (
+      <ListGroup className="list-group-flush">
+        <ListGroupItem>
+          <Link to={`/houses/${house.id}`} className="linkStyle">{house.name}</Link>
+        </ListGroupItem>
+      </ListGroup>
+    ))}
+    <p>
+      <Link to="/houses/all" className="linkStyle">All houses</Link>
+    </p>
   </p>
 );
 
@@ -56,34 +64,17 @@ const App = () => (
   <Router>
     <div className="App">
       <header>
-        <Link to="/">Home</Link>
-        <Link to="/lords">Lords</Link>
-        <Link to="/houses">Houses</Link>
+        <Link to="/" className="linkStyle">Home</Link>
+        <Link to="/lords" className="linkStyle">Lords</Link>
+        <Link to="/houses" className="linkStyle">Houses</Link>
       </header>
-
-
-      {lords.map(lord => (
-        
-        <ListGroup className="list-group-flush">
-          <ListGroupItem>
-            <Link to={`/lords/${lord.id}`}>{lord.name}</Link>
-            <Button onClick={null} >Show all</Button>
-          </ListGroupItem>
-          
-        </ListGroup> 
-        
-      ))}
-
-        
-      {houses.map(house => (
-        <ListGroup className="list-group-flush">
-          <Link to={`/houses/${house.id}`}>{house.name}</Link>
-        </ListGroup> 
-      ))}
-
       <Route path="/" exact component={Home} />
-      <Route path="/lords" component={Lords} />
-      <Route path="/houses" component={Houses} />
+      <Route path="/lords/all" component={LordCards} />
+      <Route path="/lords/:id" component={Lord} />
+      <Route path="/lords" exact component={LordsList} />
+      <Route path="/houses/all" component={HouseCards} />
+      <Route path="/houses/:id" component={House} />
+      <Route path="/houses" exact component={Houses} />
     </div>
   </Router>
 );

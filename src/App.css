@@ -32,6 +32,12 @@ div {
   color: red;
 }
 
+header {
+  padding-left: 24px;
+  text-align: left;
+  align-content: inherit;
+}
+
 
 
 nav {
@@ -57,13 +63,8 @@ h3 {
   padding: 40px;
 }
 
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+p {
+  text-align: start;
+  padding-left: 24px;
+}
 

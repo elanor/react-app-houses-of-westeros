@@ -1,14 +1,32 @@
 .App {
     font-family: sans-serif;
-    text-align: center;
+    text-align: left;
+    padding: 4px;
   }
   
   header {
-    padding: 20px;
+    padding: 12px;
     border-bottom: 1px solid lightgray;
   }
   
   a {
     margin: 0 10px;
   }
+
+  p {
+    font-family: inherit;
+    color: black;
+  }
+
+  .linkStyle {
+    text-decoration: none;
+    color: black;
+    font-weight: "bold";
+    
+  }
+
+  
+
+
+
   
