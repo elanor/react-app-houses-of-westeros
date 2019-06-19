@@ -97,7 +97,7 @@ export const houses = [
     image:
       "https://awoiaf.westeros.org/images/thumb/d/d5/House_Lannister.svg/250px-House_Lannister.svg.png",
     description:
-      "House Lannister of Casterly Rock is one of the Great Houses of Seven Kingdoms, and the principal house of the westerlands. Their seat is Casterly Rock, though another branch exists that is based in nearby Lannisport. Their sigil is a golden lion on a field of crimson.[1] Their official motto is: Hear Me Roar! However, their unofficial motto, equally well known, is: A Lannister always pays his debts"
+      "House Lannister of Casterly Rock is one of the Great Houses of Seven Kingdoms, and the principal house of the westerlands. Their seat is Casterly Rock, though another branch exists that is based in nearby Lannisport. Their sigil is a golden lion on a field of crimson. Their official motto is: Hear Me Roar! However, their unofficial motto, equally well known, is: A Lannister always pays his debts"
   },
   {
     id: "3",
@@ -107,7 +107,7 @@ export const houses = [
     image:
       "https://awoiaf.westeros.org/images/thumb/2/2d/House_Baratheon.svg/250px-House_Baratheon.svg.png",
     description:
-      "The Baratheon sigil is a crowned black stag on a field of gold.[1] Members of the family tend to be tall and powerfully built, with black hair and blue eyes, as well as strong, square jawlines. They are known for their mercurial tempers, and their words are: Ours is the Fury"
+      "The Baratheon sigil is a crowned black stag on a field of gold. Members of the family tend to be tall and powerfully built, with black hair and blue eyes, as well as strong, square jawlines. They are known for their mercurial tempers, and their words are: Ours is the Fury"
   },
   {
     id: "4",
@@ -177,6 +177,6 @@ export const houses = [
     image:
       "https://awoiaf.westeros.org/images/thumb/4/46/House_Mormont.svg/250px-House_Mormont.svg.png",
     description:
-      "House Mormont of Bear Island is a noble house of the north,[1] one of the principal families sworn to House Stark.[2] Their seat is at Bear Island, located in the Bay of Ice northwest of Winterfell. Their blazon is a black bear over a green wood[3][4] and their motto is: Here We Stand"
+      "House Mormont of Bear Island is a noble house of the north, one of the principal families sworn to House Stark. Their seat is at Bear Island, located in the Bay of Ice northwest of Winterfell. Their blazon is a black bear over a green wood and their motto is: Here We Stand"
   }
 ];
